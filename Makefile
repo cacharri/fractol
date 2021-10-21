@@ -6,12 +6,12 @@
 #    By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 17:55:22 by ialvarez          #+#    #+#              #
-#    Updated: 2021/10/14 20:25:02 by ialvarez         ###   ########.fr        #
+#    Updated: 2021/10/21 18:54:23 by ialvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-LINK = -lmlx -lmlx -framework OpenGL -framework AppKit
+LINK = -lmlx -framework OpenGL -framework AppKit
 NAME = fractol
 
 SRCS = 	fractol.c
@@ -19,7 +19,7 @@ SRCS = 	fractol.c
 OBJECTS = $(SRCS:.c=.o)
 LIBFT_DIR = libft/
 LIB_NAME = $(LIBFT_DIR)libft.a
-INCLUDES = -I. -I$(LIB_PATH)
+INCLUDES = -I. -I$(LIBFT_DIR)
 FSANITIZE = -g3 -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror $(INCLUDES)
 
