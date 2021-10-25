@@ -6,11 +6,12 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:46:14 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/10/21 20:34:04 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/10/25 20:24:50 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include <complex.h>
 
 typedef struct	s_data {
 	void	*img;
@@ -26,6 +27,15 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+
+void	julia_fractol()
+{
+	double _Complex	z;
+	float _Complex	c = 2.0f + 2.0f*_Complex_I;
+
+	
+
 }
 
 int	main(void)
