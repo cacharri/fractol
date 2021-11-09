@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:46:14 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/02 22:08:18 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/09 21:50:08 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,35 @@ int		key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
-/*
-void	julia()
+
+int	julia(t_data *data, t_vars *var)
 {
+	int				x;
+	int				y;
 	double _Complex	z;
 	float _Complex	c = 2.0f + 2.0f*_Complex_I;
 
-	
+	y = 0;
+	x = 0;
+	mlx_do_sync(data->mlx);
+	while (y <= HEIGHT)
+	{
+		while (x <= WIDTH)
+		{
+		}
+	}
+	return (0);
 
 }
-*/
+
 int	main(int argc, char **argv)
 {
-	//t_data	img;
+	t_data	img;
 	t_vars	vars;
+	int		maxIterations;
 
+
+	maxIterations = 100;
 	printf("%d\n", argc);
 	if (argc < 2)
 		write (1, "Not enough arguments\n", 21);
@@ -57,7 +71,9 @@ int	main(int argc, char **argv)
 	if(argc == 2 && !ft_strncmp(argv[1], "Julia", 6))
 	{
 		vars.mlx = mlx_init();
-		vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
+		vars.win = mlx_new_window(vars.mlx, WIDTH, HEIGHT, "FRACT-OL");
+		img.img = mlx_new_image(vars.mlx, WIDTH, HEIGHT);
+		vars.addr = mlx
 		mlx_key_hook(vars.win, key_hook, &vars);
 		mlx_loop(vars.mlx);
 		/*

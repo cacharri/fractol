@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 18:25:22 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/02 22:08:20 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/09 20:50:58 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 #include <complex.h>
 #include <stdio.h>
 #include <math.h>
+#include "key.h"
 #include "libft/libft.h"
 
+# define HEIGHT 1080
+# define WIDTH 1920
 
 typedef struct s_data {
 	void	*mlx;
