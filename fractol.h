@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 18:25:22 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/09 20:50:58 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/10 22:07:51 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 typedef struct s_data {
 	void	*mlx;
-	void	*mlx_win;
+	void	*win;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -34,10 +34,19 @@ typedef struct s_data {
 }				t_data;
 
 typedef struct s_vars {
-	void	*mlx;
-	void	*win;
+	double	real;
+	double	ymag;
+	double	nreal;
+	double	nymag;
+	double	olreal;
+	double	olymag;
+	double	zoom;
+	double	movx;
+	double	movy;
+	int		maxiter;
 }				t_vars;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		rat(int key, int x, int y, t_vars *vars);
 
 #endif

@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key.h                                              :+:      :+:    :+:   */
+/*   rat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 19:24:47 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/10 22:08:18 by ialvarez         ###   ########.fr       */
+/*   Created: 2021/11/10 22:00:51 by ialvarez          #+#    #+#             */
+/*   Updated: 2021/11/10 22:07:14 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEY_H
-# define KEY_H
+#include "fractol.h"
 
-# define UP_MOUSE 5
-# define DOWN_MOUSE 5
-
-# define KEY_PRESS		2
-# define KEY_DESTROY	17
-# define KEY_W			13
-# define KEY_S			1
-# define KEY_A			0
-# define KEY_D			2
-
-
-#endif
+int		rat(int key, int x, int y, t_vars *vars)
+{
+	 x = 0;
+	 y = 0;
+	 if (key == UP_MOUSE)
+		 vars->zoom += 0.01;
+	 if (key == DOWN_MOUSE)
+		 vars->zoom += 0.01;
+	 return (0);
+}

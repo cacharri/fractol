@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:46:14 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/09 21:50:08 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/10 22:00:28 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,35 +28,45 @@ int		key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
+int julia_math(t_data *data, t_vars *vars)
+{
+	int i;
+
+	i = 0;
+
+	return (0);
+}
+
 
 int	julia(t_data *data, t_vars *var)
 {
-	int				x;
-	int				y;
-	double _Complex	z;
-	float _Complex	c = 2.0f + 2.0f*_Complex_I;
+	int	j;
+	int	x;
+	int	y;
 
 	y = 0;
 	x = 0;
+	j = 0;
+
 	mlx_do_sync(data->mlx);
-	while (y <= HEIGHT)
+	while (y++ <= HEIGHT)
 	{
-		while (x <= WIDTH)
+		while (x++ <= WIDTH)
 		{
+			my_mlx_pixel_put(data, x, y, j);
 		}
 	}
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
 
 }
 
 int	main(int argc, char **argv)
 {
-	t_data	img;
+	t_data	dat;
 	t_vars	vars;
-	int		maxIterations;
 
-
-	maxIterations = 100;
+	vars.maxiter = 100;
 	printf("%d\n", argc);
 	if (argc < 2)
 		write (1, "Not enough arguments\n", 21);
@@ -70,12 +80,14 @@ int	main(int argc, char **argv)
 	}
 	if(argc == 2 && !ft_strncmp(argv[1], "Julia", 6))
 	{
-		vars.mlx = mlx_init();
-		vars.win = mlx_new_window(vars.mlx, WIDTH, HEIGHT, "FRACT-OL");
-		img.img = mlx_new_image(vars.mlx, WIDTH, HEIGHT);
-		vars.addr = mlx
-		mlx_key_hook(vars.win, key_hook, &vars);
-		mlx_loop(vars.mlx);
+		dat.mlx = mlx_init();
+		dat.win = mlx_new_window(dat.mlx, WIDTH, HEIGHT, "FRACT-OL");
+		dat.img = mlx_new_image(dat.mlx, WIDTH, HEIGHT);
+		dat.addr = mlx_get_data_addr(dat.img, &dat.bits_per_pixel,
+				 &dat.line_lenght, &dat.endian);
+	//	mlx_key_hook(vars.win, key_hook, &vars);
+		mlx_loop_hook(dat.mlx, julia, &dat);
+		mlx_loop(dat.mlx);
 		/*
 		img.mlx = mlx_init();
 		img.mlx_win = mlx_new_window(img.mlx, 1920, 1080, "Hello world!");
@@ -87,7 +99,8 @@ int	main(int argc, char **argv)
 		my_mlx_pixel_put(&img, 400, 150, 0x00FFFF00);
 		my_mlx_pixel_put(&img, 500, 200, 0x00FFFF00);
 		my_mlx_pixel_put(&img, 600, 250, 0x00FFFF00);
-		mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
+
+		mlx_put_image_to_window(dat.mlx, dat.win, dat.img, 0, 0);
 		mlx_loop(img.mlx);*/
 	}
 	/*
