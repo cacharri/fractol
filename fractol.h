@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 18:25:22 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/10 22:07:51 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/16 20:21:01 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_data {
 	int		bits_per_pixel;
 	int		line_lenght;
 	int		endian;
+	int		color;
 }				t_data;
 
 typedef struct s_vars {

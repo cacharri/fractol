@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:46:14 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/10 22:00:28 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/16 21:04:54 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_lenght + x * (data->bits_per_pixel / 8));
+	dst = (char *)data->addr + (y * data->line_lenght + x 
+			* (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
 
@@ -28,15 +29,24 @@ int		key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
-int julia_math(t_data *data, t_vars *vars)
+int	julia_init(t_vars *vars, int x, int y)
 {
-	int i;
-
-	i = 0;
-
-	return (0);
+	vars->nreal = 1.5 * (x - WIDTH / 2) / (0.5 * vars->zoom * WIDTH)
+	   	+ vars->movx;
+	vars->nymag = (y - HEIGHT / 2) / (0.5 * vars->zoom * HEIGHT) + vars->movy;
+	return (-1);
 }
 
+void	julia_actual(t_vars *var)
+{
+
+	var->olreal = var->nreal;
+	var->olymag = var->olymag;
+	var->nreal = var->olreal * var->olreal - var->olymag * var->olymag 
+		+ var->real;
+	var->nymag = 2 * var->olreal * var->olymag + var->ymag;
+	
+}
 
 int	julia(t_data *data, t_vars *var)
 {
@@ -47,14 +57,25 @@ int	julia(t_data *data, t_vars *var)
 	y = 0;
 	x = 0;
 	j = 0;
-
+	var->maxiter = 300;
+	var->real = -0.7;
+	var->ymag = 0.27015;
+	var->zoom = 1;
 	mlx_do_sync(data->mlx);
 	while (y++ <= HEIGHT)
 	{
 		while (x++ <= WIDTH)
 		{
-			my_mlx_pixel_put(data, x, y, j);
+			j = julia_init(var, x, y);
+			while (++j < var->maxiter)
+			{
+				julia_actual(var);
+				if ((var->nreal * var->nreal + var->nymag *var->nymag) > 4)
+					break;
+			}
+			my_mlx_pixel_put(data, x, y, 0x00FF0000);
 		}
+
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
@@ -64,9 +85,8 @@ int	julia(t_data *data, t_vars *var)
 int	main(int argc, char **argv)
 {
 	t_data	dat;
-	t_vars	vars;
+	t_vars	var;
 
-	vars.maxiter = 100;
 	printf("%d\n", argc);
 	if (argc < 2)
 		write (1, "Not enough arguments\n", 21);
@@ -80,6 +100,8 @@ int	main(int argc, char **argv)
 	}
 	if(argc == 2 && !ft_strncmp(argv[1], "Julia", 6))
 	{
+		ft_bzero(&dat, sizeof(t_data));
+		ft_bzero(&var, sizeof(t_vars));
 		dat.mlx = mlx_init();
 		dat.win = mlx_new_window(dat.mlx, WIDTH, HEIGHT, "FRACT-OL");
 		dat.img = mlx_new_image(dat.mlx, WIDTH, HEIGHT);
