@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 18:25:22 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/16 20:21:01 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/17 18:48:28 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ typedef struct s_data {
 	int		line_lenght;
 	int		endian;
 	int		color;
+	int		w;
+	int		s;
+	int		d;
+	int		a;
 }				t_data;
 
 typedef struct s_vars {
@@ -49,5 +53,9 @@ typedef struct s_vars {
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		rat(int key, int x, int y, t_vars *vars);
+int		move(t_data *dat, t_vars *var);
+int		exit_touch(t_data *dat);
+int		free_touch(int keydo, t_data *dat);
+int		touch(int keydo, t_data *dat);
 
 #endif
