@@ -6,12 +6,12 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:46:14 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/17 20:49:35 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/18 20:36:53 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
+/*
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 			* (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-
+*/
 static	void	init(t_vars *vars)
 {
 	ft_bzero(vars, sizeof(t_vars));
@@ -28,6 +28,7 @@ static	void	init(t_vars *vars)
 	vars->real = -0.7;
 	vars->ymag = 0.27015;
 	vars->zoom = 1;
+	//vars->color = 265;
 }
 
 static	int	julia_init(t_vars *vars, int x, int y)
@@ -51,25 +52,30 @@ static	void	julia_actual(t_vars *var)
 static	int	julia(t_data *data, t_vars *var)
 {
 	int	j;
-	int	x;
-	int	y;
 
-	y = 0;
+	data->y = 0;
+	data->color = 265;
 	mlx_do_sync(data->mlx);
-	while (y++ < HEIGHT)
+	while (data->y < HEIGHT)
 	{
-		x = 0;
-		while (x++ < WIDTH)
+		data->x = 0;
+		while (data->x < WIDTH)
 		{
-			j = julia_init(var, x, y);
+			j = julia_init(var, data->x, data->y);
 			while (j++ < var->maxiter)
 			{
 				julia_actual(var);
 				if ((var->nreal * var->nreal + var->nymag * var->nymag) > 4)
 					break;
+				if (j == var->maxiter)
+					put_pxl_to_img(data, data->x, data->y, 0x000000);
+				else
+					put_pxl_to_img(data, data->x, data->y, (data->color * j));
 			}
-			my_mlx_pixel_put(data, x, y, mlx_get_color_value(data->mlx, 0x000000));
+			//my_mlx_pixel_put(data, data->x, data->y, mlx_get_color_value(data->mlx, 0x000000));
+			data->x += 1;
 		}
+		data->y += 1;
 	}
 	move(data, var);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);

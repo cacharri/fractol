@@ -6,7 +6,7 @@
 #    By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 17:55:22 by ialvarez          #+#    #+#              #
-#    Updated: 2021/11/17 18:17:12 by ialvarez         ###   ########.fr        #
+#    Updated: 2021/11/18 20:17:57 by ialvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 LINK = -lmlx -framework OpenGL -framework AppKit
 NAME = fractol
 
-SRCS = 	fractol.c rat.c key.c
+SRCS = 	fractol.c rat.c key.c colorme.c
 
 OBJECTS = $(SRCS:.c=.o)
 LIBFT_DIR = libft/

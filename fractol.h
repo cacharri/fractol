@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 18:25:22 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/17 18:48:28 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/18 20:21:40 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ typedef struct s_data {
 	int		bits_per_pixel;
 	int		line_lenght;
 	int		endian;
-	int		color;
 	int		w;
 	int		s;
 	int		d;
 	int		a;
+	int		x;
+	int		y;
+	int		color;
 }				t_data;
 
 typedef struct s_vars {
@@ -57,5 +59,6 @@ int		move(t_data *dat, t_vars *var);
 int		exit_touch(t_data *dat);
 int		free_touch(int keydo, t_data *dat);
 int		touch(int keydo, t_data *dat);
+void	put_pxl_to_img(t_data *data, int x, int y, int color);
 
 #endif
