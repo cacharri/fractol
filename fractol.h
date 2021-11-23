@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 18:25:22 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/18 20:21:40 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/23 19:08:13 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #include "key.h"
 #include "libft/libft.h"
 
-# define HEIGHT 1080
-# define WIDTH 1920
+# define HEIGHT 1500
+# define WIDTH 1500
 
 typedef struct s_data {
 	void	*mlx;
@@ -37,7 +37,6 @@ typedef struct s_data {
 	int		a;
 	int		x;
 	int		y;
-	int		color;
 }				t_data;
 
 typedef struct s_vars {
@@ -51,7 +50,13 @@ typedef struct s_vars {
 	double	movx;
 	double	movy;
 	int		maxiter;
+	char	change;
 }				t_vars;
+
+typedef struct s_you {
+	t_data	*data;
+	t_vars	*vars;
+}				t_you;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		rat(int key, int x, int y, t_vars *vars);
@@ -60,5 +65,6 @@ int		exit_touch(t_data *dat);
 int		free_touch(int keydo, t_data *dat);
 int		touch(int keydo, t_data *dat);
 void	put_pxl_to_img(t_data *data, int x, int y, int color);
+int		colorme(int r, int g, int b);
 
 #endif
