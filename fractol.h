@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 18:25:22 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/23 19:08:13 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:30:53 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_data {
 	int		s;
 	int		d;
 	int		a;
-	int		x;
-	int		y;
+	//int		x;
+	//int		y;
 }				t_data;
 
 typedef struct s_vars {
@@ -54,16 +54,17 @@ typedef struct s_vars {
 }				t_vars;
 
 typedef struct s_you {
-	t_data	*data;
-	t_vars	*vars;
+	t_data	data;
+	t_vars	vars;
 }				t_you;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_you *yu, int x, int y, int color);
 int		rat(int key, int x, int y, t_vars *vars);
 int		move(t_data *dat, t_vars *var);
 int		exit_touch(t_data *dat);
 int		free_touch(int keydo, t_data *dat);
 int		touch(int keydo, t_data *dat);
+int		init(t_you *yu);
 void	put_pxl_to_img(t_data *data, int x, int y, int color);
 int		colorme(int r, int g, int b);
 
