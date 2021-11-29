@@ -6,22 +6,22 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 18:25:22 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/29 17:03:11 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/29 19:31:59 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include <mlx.h>
-#include <complex.h>
-#include <stdio.h>
-#include <math.h>
-#include "key.h"
-#include "libft/libft.h"
+# include	<mlx.h>
+# include	<complex.h>
+# include	<stdio.h>
+# include	<math.h>
+# include	"key.h"
+# include	"libft/libft.h"
 
-# define HEIGHT 1422
-# define WIDTH 1422
+# define HEIGHT 1300
+# define WIDTH 1900
 
 typedef struct s_data {
 	void	*mlx;
@@ -46,9 +46,13 @@ typedef struct s_vars {
 	double	olreal;
 	double	olymag;
 	double	zoom;
+	double	movxM;
 	double	movx;
 	double	movy;
 	int		maxiter;
+	int		mxitexp;
+	double	realM;
+	double	ymagM;
 }				t_vars;
 
 typedef struct s_you {
@@ -63,5 +67,7 @@ int		free_touch(int keydo, t_you *yu);
 int		touch(int keydo, t_you *yu);
 int		init(t_you *yu);
 int		colorme(int r, int g, int b);
+int		julia(t_you *yu);
+int		mandel(t_you *yu);
 
 #endif

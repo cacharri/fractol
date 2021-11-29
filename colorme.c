@@ -6,15 +6,15 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 20:23:00 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/29 17:03:13 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:06:59 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		colorme(int r, int g, int b)
+int	colorme(int r, int g, int b)
 {
-	int rgb;
+	int	rgb;
 
 	rgb = r;
 	rgb = (rgb << 8) + g;

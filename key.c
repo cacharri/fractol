@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:30:31 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/29 16:45:55 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:09:40 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	move(t_you *yu)
 
 int	free_touch(int keydo, t_you *yu)
 {
-
 	if (keydo == 13 && yu->data.w == 1)
 		yu->data.w = 0;
 	if (keydo == 1 && yu->data.s == 1)

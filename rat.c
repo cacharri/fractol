@@ -6,13 +6,13 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:00:51 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/29 16:48:54 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:09:52 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		rat(int key, int x, int y, t_you *yu)
+int	rat(int key, int x, int y, t_you *yu)
 {
 	x = 0;
 	y = 0;

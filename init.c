@@ -6,13 +6,13 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 12:47:58 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/29 17:02:47 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/29 19:18:59 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int init(t_you *yu)
+int	init(t_you *yu)
 {
 	ft_bzero(&yu->vars, sizeof(yu->vars));
 	ft_bzero(&yu->data, sizeof(yu->data));
@@ -20,6 +20,19 @@ int init(t_you *yu)
 	yu->vars.real = -0.7;
 	yu->vars.ymag = 0.27015;
 	yu->vars.zoom = 1;
-	yu->data.color = colorme(0, 255, 0);
+	yu->vars.movxM = -0.5;
+	yu->data.color = colorme(42, 42, 42);
+	yu->vars.mxitexp = 128;
+	yu->vars.realM = 0;
+	yu->vars.ymagM = 0;
 	return (0);
- }
+}
+
+void	my_mlx_pixel_put(t_you *yu, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = yu->data.addr + (y * yu->data.line_lenght + x
+			* (yu->data.bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
