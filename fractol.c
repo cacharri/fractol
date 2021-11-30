@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:46:14 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/29 19:16:12 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:59:55 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,23 @@
 static	void	parseo(int argc, char **argv)
 {
 	if (argc < 2)
+	{
 		write (1, "Not enough arguments\n", 21);
+		exit (0);
+	}
 	if (argc > 2)
+	{
 		write (1, "Too many arguments\n", 19);
+		exit (0);
+	}
 	if (argc == 2)
 	{
 		if (ft_strncmp(argv[1], "Julia", 6) != 0 && ft_strncmp(argv[1],
 				"Mandelbrot", 11) != 0)
+		{
 			write (1, "You have to write 'Julia' or 'Mandelbrot'\n", 42);
+			exit (0);
+		}
 	}
 }
 

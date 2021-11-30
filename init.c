@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 12:47:58 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/11/29 19:18:59 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/11/30 18:23:57 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int	init(t_you *yu)
 	yu->vars.ymag = 0.27015;
 	yu->vars.zoom = 1;
 	yu->vars.movxM = -0.5;
-	yu->data.color = colorme(42, 42, 42);
+	yu->data.color = colorme(132, 28, 192);
 	yu->vars.mxitexp = 128;
-	yu->vars.realM = 0;
-	yu->vars.ymagM = 0;
 	return (0);
 }
 
